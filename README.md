@@ -1,3 +1,8 @@
+# Codec-Technologies-Internship-Portfolio-2026 — root `index.html`
+
+Copy everything inside the code block into `index.html` at the root of the repo (replace the existing file). Keep `.nojekyll` and `dashboard_data.json` as they are.
+
+````html
 <!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><meta name='color-scheme' content='dark'><title>Codec Technologies Internship Portfolio 2026 — Dashboard</title><style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 :root{--bg:#0B0F1A;--bg2:#0F1526;--deep:#1E1B4B;--violet:#7C3AED;--cyan:#22D3EE;--mint:#34D399;--pink:#F472B6;--ink:#E5E7EB;--muted:#94A3B8;--line:rgba(148,163,184,.14);--glass:rgba(17,24,39,.62)}
@@ -174,3 +179,4 @@ let cur=secs[0];secs.forEach(s=>{if(!s.classList.contains('hide')&&s.getBounding
 // keyboard: / focuses search
 addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement.tagName!=='INPUT'){e.preventDefault();document.getElementById('q').focus()}});
 </script></body></html>
+````
