@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EV Internship Projects — Dashboard</title>
+<style>
+  :root{
+    --bg:#071a12; --bg2:#0b241a; --card:#0f2c20; --card2:#123526;
+    --line:#1f4a37; --text:#eaf5ef; --muted:#8fb9a6; --accent:#28c76f;
+    --accent2:#5fe0a3; --chip:#12382a; --shadow:0 8px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 80% -10%,#0f3826 0,var(--bg) 55%);
+    color:var(--text);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100vh;padding:0 0 60px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  header{padding:44px 0 26px}
+  .kicker{color:var(--accent2);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+  h1{margin:.25em 0 .1em;font-size:34px;letter-spacing:-.02em}
+  .sub{color:var(--muted);max-width:760px}
+  .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+  .stat{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);
+    border-radius:14px;padding:14px 18px;min-width:132px;box-shadow:var(--shadow)}
+  .stat b{display:block;font-size:26px;color:var(--accent2);line-height:1}
+  .stat span{color:var(--muted);font-size:12.5px}
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:26px 0 18px}
+  #q{flex:1;min-width:220px;background:var(--card);border:1px solid var(--line);color:var(--text);
+    padding:12px 14px;border-radius:12px;font-size:14px;outline:none}
+  #q:focus{border-color:var(--accent)}
+  .count{color:var(--muted);font-size:13px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+  .card{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);
+    transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+  .card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+  .num{position:absolute;top:16px;right:18px;font-weight:800;font-size:40px;color:#17402e;letter-spacing:-.03em}
+  .card h3{margin:2px 0 8px;font-size:18px;padding-right:44px}
+  .card p{margin:0 0 14px;color:var(--muted);font-size:13.5px;flex:1}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+  .chip{background:var(--chip);border:1px solid var(--line);color:var(--accent2);
+    font-size:11.5px;padding:3px 9px;border-radius:999px}
+  .foot{display:flex;align-items:center;justify-content:space-between}
+  .tests{font-size:12px;color:var(--muted)}
+  .tests b{color:var(--accent2)}
+  .open{font-weight:700;color:var(--accent2);font-size:13.5px}
+  .card:hover .open{color:#bff4d8}
+  .open::after{content:" →";transition:margin .15s} .card:hover .open::after{margin-left:4px}
+  footer{margin-top:34px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:18px}
+  .note{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:12px 16px;color:var(--muted);
+    font-size:12.5px;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Codec Technologies India · 2026</div>
+    <h1>Electric Vehicle Internship — Project Dashboard</h1>
+    <p class="sub">Ten completed EV projects by <b>Eswar Mahalingam</b>. Click any card to open that project's folder, code, README and results.</p>
+    <div class="stats">
+      <div class="stat"><b>10</b><span>projects</span></div>
+      <div class="stat"><b>226</b><span>tests passing</span></div>
+      <div class="stat"><b>9</b><span>Python · 1 React Native</span></div>
+      <div class="stat"><b>100%</b><span>reproducible</span></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <input id="q" placeholder="Search projects, tools, topics…" oninput="filter()">
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="note">Tip: opening this page locally, each card opens the project folder. To use it as a live website, enable <b>GitHub Pages</b> (Settings → Pages → Deploy from branch → <code>/root</code>) and browse to <code>/dashboard/</code>.</div>
+
+  <footer>
+    Eswar Mahalingam · +91-9360548243 · eswarmba05313@gmail.com — Electric Vehicle Internship, Codec Technologies India.
+    Every project runs on real cited data or clearly-declared synthetic data.
+  </footer>
+</div>
+
+<script>
+const P=[
+ {n:1,f:"01_BMS_Simulation",t:"Battery Management System (BMS) Simulation",d:"96s2p pack on a 2-RC cell model — Coulomb-counting vs Extended Kalman Filter SOC, capacity/resistance SOH over 500 cycles, lumped thermal model with coolant/heater control, fault detection and passive balancing.",tags:["Python","NumPy","SciPy","SOC/SOH","Thermal"],tests:23},
+ {n:2,f:"02_EV_Charging_Station_Locator_App",t:"EV Charging Station Locator App",d:"Expo / React Native (TypeScript) app with Google Maps, expo-location, Open Charge Map client, real-time availability (Firebase/ThingSpeak) and a Dijkstra charging-stop route optimiser, plus a Leaflet web demo built from the same logic.",tags:["React Native","TypeScript","Google Maps","Jest"],tests:55},
+ {n:3,f:"03_Solar_Powered_EV_Charging_Station",t:"Solar-Powered EV Charging Station Design",d:"HOMER-style 8760-hour techno-economic simulation for Ghaziabad on real NASA POWER irradiance — stochastic EV demand, LiFePO4 storage dispatch, 247-point sizing grid, NPC/LCOE/payback, live-formula Excel workbook.",tags:["Python","NASA POWER","openpyxl","LCOE"],tests:11},
+ {n:4,f:"04_AI_Driving_Efficiency_Optimizer",t:"AI-Powered Driving Efficiency Optimizer",d:"Physics-based trip simulator (declared synthetic), 19 behaviour features, Ridge/RandomForest/GradientBoosting Wh/km prediction (R² 0.975), 95%-accurate driver-style classifier and a counterfactual driving-tip recommender.",tags:["Python","Scikit-learn","Jupyter","ML"],tests:13},
+ {n:5,f:"05_EV_Drivetrain_Modeling_Simulation",t:"EV Drivetrain Modeling & Simulation",d:"Simulink-equivalent Python model: PMSM / induction / brushed-DC motors with loss maps, IGBT vs SiC inverter, single-speed gearbox with ratio sweep, WLTP- and MIDC-like cycles, and an AC-vs-DC efficiency comparison.",tags:["Python","Motors","Inverter","AC vs DC"],tests:15},
+ {n:6,f:"06_IoT_EV_Health_Monitoring_System",t:"IoT-Based EV Health Monitoring System",d:"NodeMCU firmware (INA219 + DS18B20 + 12V divider → ThingSpeak or Firebase, compile-checked), Raspberry Pi alternative, seeded pack simulator, offline mock cloud and a single-file responsive web dashboard.",tags:["ESP8266","IoT","Flask","Dashboard"],tests:17},
+ {n:7,f:"07_EV_Lifecycle_Analysis",t:"Lifecycle Analysis of an Electric Vehicle",d:"Screening-level cradle-to-grave LCA (materials, battery, use phase on India/EU/RE grids, end-of-life) for a compact EV vs petrol car and e-scooter vs petrol scooter, break-even km, tornado sensitivity, fully-sourced Excel workbook.",tags:["Python","LCA","ICCT/CEA","openpyxl"],tests:11},
+ {n:8,f:"08_Smart_Traffic_Light_EV_Priority",t:"Smart Traffic Light with EV Priority",d:"Arduino Uno controller with MFRC522 RFID whitelist, ETA-aware pre-emption state machine with fairness guards (compile-checked), a NEO-6M + HC-12 GPS variant, Wokwi circuit and a SimPy intersection simulation.",tags:["Arduino","RFID/GPS","SimPy","Wokwi"],tests:26},
+ {n:9,f:"09_Wireless_Charging_System_Design",t:"Wireless Charging System Design",d:"Analytical + numerical (Neumann filament, Biot–Savart) model in place of COMSOL/Maxwell — SAE J2954 WPT2 7.7 kW coil pair, SS and LCC-S compensation at 85 kHz, efficiency vs gap/misalignment/load and a B-field map vs ICNIRP limit.",tags:["Python","Coils","SAE J2954","EMF"],tests:15},
+ {n:10,f:"10_EV_Market_Forecast_Dashboard",t:"EV Market Forecast Dashboard",d:"Real IEA Global EV Data Explorer data (GEO 2026, CC BY 4.0), 20 sourced government policies, logistic / Bass / CAGR growth models to 2035, an interactive Plotly Dash app and an offline static-HTML export.",tags:["Python","Plotly Dash","IEA data","Forecasting"],tests:40},
+];
+const grid=document.getElementById('grid');
+function render(list){
+  grid.innerHTML=list.map(p=>`
+    <a class="card" href="reports/${p.f}.pdf" title="Open report for ${p.f}">
+      <span class="num">${String(p.n).padStart(2,'0')}</span>
+      <h3>${p.t}</h3>
+      <p>${p.d}</p>
+      <div class="chips">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+      <div class="foot"><span class="tests"><b>${p.tests}</b> tests</span><span class="open">Open report PDF</span></div>
+    </a>`).join('');
+  document.getElementById('count').textContent=`${list.length} of ${P.length} shown`;
+}
+function filter(){
+  const q=document.getElementById('q').value.toLowerCase().trim();
+  render(!q?P:P.filter(p=>(p.t+' '+p.d+' '+p.tags.join(' ')).toLowerCase().includes(q)));
+}
+render(P);
+</script>
+</body>
+</html>

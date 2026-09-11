@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Security Projects — Dashboard</title>
+<style>
+  :root{
+    --bg:#05070f; --card:#0c1222; --card2:#111a30; --line:#213052;
+    --text:#e7edfb; --muted:#8ea0c6; --accent:#3d7bff; --accent2:#6ea8ff;
+    --chip:#132043; --green:#2fd27a; --amber:#f5b544; --red:#ff5d6c;
+    --shadow:0 8px 30px rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 85% -10%,#12204a 0,var(--bg) 55%);
+    color:var(--text);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100vh;padding:0 0 60px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  header{padding:44px 0 22px}
+  .kicker{color:var(--accent2);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+  h1{margin:.25em 0 .1em;font-size:33px;letter-spacing:-.02em}
+  .sub{color:var(--muted);max-width:780px}
+  .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+  .stat{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);
+    border-radius:14px;padding:14px 18px;min-width:128px;box-shadow:var(--shadow)}
+  .stat b{display:block;font-size:26px;color:var(--accent2);line-height:1}
+  .stat span{color:var(--muted);font-size:12.5px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:26px 0 16px}
+  #q{flex:1;min-width:220px;background:var(--card);border:1px solid var(--line);color:var(--text);
+    padding:12px 14px;border-radius:12px;font-size:14px;outline:none}
+  #q:focus{border-color:var(--accent)}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tab{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:9px 14px;border-radius:999px;
+    cursor:pointer;font-size:13px;user-select:none}
+  .tab.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .count{color:var(--muted);font-size:13px;margin-left:auto}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+  .card{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);
+    transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+  .card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 40px rgba(0,0,0,.6)}
+  .num{position:absolute;top:15px;right:18px;font-weight:800;font-size:38px;color:#1a2748;letter-spacing:-.03em}
+  .card h3{margin:2px 0 8px;font-size:17.5px;padding-right:46px}
+  .card p{margin:0 0 13px;color:var(--muted);font-size:13.5px;flex:1}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}
+  .chip{background:var(--chip);border:1px solid var(--line);color:var(--accent2);
+    font-size:11.5px;padding:3px 9px;border-radius:999px}
+  .cat{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:2px 8px;border-radius:6px;margin-bottom:10px}
+  .cat.core{background:rgba(61,123,255,.15);color:var(--accent2);border:1px solid #24407e}
+  .cat.adv{background:rgba(47,210,122,.13);color:var(--green);border:1px solid #1c5e3c}
+  .cat.def{background:rgba(245,181,68,.14);color:var(--amber);border:1px solid #6a5320}
+  .foot{display:flex;align-items:center;justify-content:space-between}
+  .tests{font-size:12px;color:var(--muted)}.tests b{color:var(--green)}
+  .open{font-weight:700;color:var(--accent2);font-size:13.5px}
+  .card:hover .open{color:#cfe0ff}
+  .open::after{content:" →";transition:margin .15s}.card:hover .open::after{margin-left:4px}
+  .badge{position:absolute;top:0;left:0;background:var(--amber);color:#231a02;font-size:10.5px;font-weight:800;
+    padding:3px 9px;border-radius:16px 0 12px 0;letter-spacing:.04em}
+  footer{margin-top:34px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:18px}
+  .note{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:12px 16px;color:var(--muted);
+    font-size:12.5px;margin-top:16px}
+  .note b{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Codec Technologies India · 2026</div>
+    <h1>Cyber Security Internship — Project Dashboard</h1>
+    <p class="sub">Twenty completed, defensive/educational security projects by <b>Eswar Mahalingam</b>. Click any card to open that project's folder, code, README and results. Every project runs only against its own bundled lab targets or synthetic data.</p>
+    <div class="stats">
+      <div class="stat"><b>20</b><span>projects</span></div>
+      <div class="stat"><b>226</b><span>tests passing</span></div>
+      <div class="stat"><b>10 + 10</b><span>core + advanced</span></div>
+      <div class="stat"><b>3</b><span>defensive substitutes</span></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <input id="q" placeholder="Search projects, tools, topics…" oninput="apply()">
+  </div>
+  <div class="toolbar" style="margin-top:0">
+    <div class="tabs">
+      <span class="tab on" data-c="all" onclick="setCat(this)">All</span>
+      <span class="tab" data-c="core" onclick="setCat(this)">Set A · Core</span>
+      <span class="tab" data-c="adv" onclick="setCat(this)">Set B · Advanced</span>
+      <span class="tab" data-c="def" onclick="setCat(this)">Defensive substitutes</span>
+    </div>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="note">Three briefs are delivered as the <b>defensive</b> version (marked ⚠): #13 ransomware → behaviour <b>detector</b>, #04 phishing → detection + safe awareness, #14 dark-web monitoring → lawful k-anonymity credential intel. No attack tooling, no real targets.</div>
+  <div class="note">Tip: opening this page locally, each card opens the project folder. For a live website, enable <b>GitHub Pages</b> (Settings → Pages → Deploy from branch → root) and browse to <code>/dashboard/</code>.</div>
+
+  <footer>
+    Eswar Mahalingam · +91-9360548243 · eswarmba05313@gmail.com — Cyber Security Internship, Codec Technologies India.
+    Ethical &amp; educational use only, against systems you own or are authorised to test.
+  </footer>
+</div>
+
+<script>
+const P=[
+ {n:1,c:"core",f:"01_VAPT_Lab",t:"VAPT Lab",d:"A bundled deliberately-vulnerable Flask app plus a scanner (nmap/socket, security-header check, web-vuln probe) that finds every planted flaw and writes a CVSS-rated report.",tags:["Nmap","Web vulns","CVSS","Flask"],tests:11},
+ {n:2,c:"core",f:"02_Personal_Firewall",t:"Personal Firewall",d:"A scapy packet monitor with a pure, importable rule engine (IP/CIDR/port/protocol/direction), offline pcap replay, and iptables/WFP rule translation.",tags:["scapy","iptables","Packet filter"],tests:11},
+ {n:3,c:"core",f:"03_IDS_ML",t:"Intrusion Detection System (ML)",d:"RandomForest + IsolationForest on the real NSL-KDD dataset, with a PCAP→flow bridge to score live-ish captures. Supervised F1 0.998 on hold-out.",tags:["Scikit-learn","NSL-KDD","Anomaly"],tests:7},
+ {n:4,c:"core def",f:"04_Phishing_Detection_and_Awareness",t:"Phishing Detection & Awareness",d:"Defensive: URL + email phishing classifiers on real feeds, plus a safe internal awareness simulator whose training page has no credential capture.",tags:["ML","SPF/DKIM/DMARC","Awareness"],tests:8,def:1},
+ {n:5,c:"core",f:"05_Secure_Web_Application",t:"Secure Web Application",d:"A Flask app demonstrating the OWASP Top 10 defenses: argon2 hashing, JWT, RBAC, parameterized SQL, CSRF, escaping, security headers and login rate-limiting.",tags:["Flask","OWASP","JWT","argon2"],tests:10},
+ {n:6,c:"core",f:"06_Cryptography_Algorithms",t:"Cryptography Algorithms",d:"AES-GCM + a from-scratch AES-128, RSA OAEP/PSS, SHA/HMAC and an ECDH→AES secure-channel demo — all checked against FIPS/NIST/RFC test vectors.",tags:["AES","RSA","SHA","cryptography"],tests:12},
+ {n:7,c:"core",f:"07_Password_Hashing_and_Cracking",t:"Password Hashing & Cracking",d:"Educational: MD5→bcrypt/argon2 timing, dictionary & brute-force against the project's own synthetic hashes, salting demo and a password-strength meter.",tags:["Hashing","bcrypt","Entropy"],tests:8},
+ {n:8,c:"core",f:"08_Network_Traffic_Analysis",t:"Network Traffic Analysis",d:"A scapy PCAP analyzer detecting SYN scans, periodic C2 beacons, DNS bursts, exfil and plaintext credentials, with a report and Snort-rule examples.",tags:["scapy","PCAP","C2","Snort"],tests:8},
+ {n:9,c:"core",f:"09_Incident_Response_Playbook",t:"Incident Response Playbook",d:"A NIST 800-61r2 plan and six ATT&CK-mapped playbooks (PDF) plus a log-triage mini-SIEM that reconstructs an incident timeline from synthetic logs.",tags:["NIST","MITRE ATT&CK","SIEM"],tests:8},
+ {n:10,c:"core",f:"10_Honeypot",t:"Honeypot",d:"A low-interaction SSH/HTTP/Telnet honeypot that never grants access, captures attempted credentials, and aggregates events into an analytics dashboard.",tags:["Honeypot","Threat intel","Dashboard"],tests:7},
+ {n:11,c:"adv",f:"11_Mobile_App_Security_Testing_Framework",t:"Mobile App Security Testing Framework",d:"Static analysis of a self-made insecure Android app — manifest flaws, hardcoded secrets, weak crypto, insecure WebView — mapped to OWASP Mobile Top 10 / MASVS.",tags:["Android","OWASP Mobile","SAST"],tests:8},
+ {n:12,c:"adv",f:"12_IoT_Device_Pentest_Lab",t:"IoT Device Pentest Lab",d:"Simulated vulnerable IoT services on localhost (camera, router, bulb, telnet) plus an assessment toolkit and a firmware-triage demo, mapped to OWASP IoT Top 10.",tags:["IoT","Default creds","Firmware"],tests:9},
+ {n:13,c:"adv def",f:"13_Ransomware_Behaviour_Detection",t:"Ransomware Behaviour Detection",d:"Defensive substitute: a monitor that catches ransomware-style activity (canary files, entropy spikes, mass modification) — no malware, benign sandboxed workload only.",tags:["Detection","Canary","Entropy"],tests:17,def:1},
+ {n:14,c:"adv def",f:"14_Threat_Intel_Credential_Leak_Monitor",t:"Threat-Intel Credential-Leak Monitor",d:"Defensive substitute for dark-web monitoring: k-anonymity breach checks (only a 5-char hash prefix leaves), a synthetic leak feed analyzer and IOC enrichment.",tags:["k-anonymity","OSINT","IOC"],tests:13,def:1},
+ {n:15,c:"adv",f:"15_Email_Security_Gateway",t:"Email Security Gateway",d:"An email gateway scoring SPF/DKIM/DMARC, URLs and attachments plus an ML spam/phish classifier, returning ALLOW / QUARANTINE / REJECT with reasons.",tags:["Email","Scikit-learn","DMARC"],tests:23},
+ {n:16,c:"adv",f:"16_Browser_Exploit_Detection_Toolkit",t:"Browser Exploit Detection Toolkit",d:"Detects (not performs) XSS sinks, clickjacking exposure, weak CSP, obfuscated payloads and insecure cookie flags across bundled vulnerable vs hardened pages.",tags:["XSS","CSP","Clickjacking"],tests:16},
+ {n:17,c:"adv",f:"17_Digital_Forensics_Toolkit",t:"Digital Forensics Toolkit",d:"Hashing with chain-of-custody, JPEG carving from a synthetic disk image, EXIF/PDF metadata, MAC-time timeline and a memory-triage process-tree analyzer.",tags:["Forensics","Carving","Custody"],tests:12},
+ {n:18,c:"adv",f:"18_Secure_File_Sharing_Platform",t:"Secure File Sharing Platform",d:"AES-256-GCM envelope encryption with RSA/scrypt key wrapping, expiring & download-limited links, revocation and an audit log — the server stores only ciphertext.",tags:["AES-GCM","RSA","Access control"],tests:15},
+ {n:19,c:"adv",f:"19_Insider_Threat_Detection",t:"Insider Threat Detection",d:"User-behaviour analytics on synthetic CERT-style logs: per-user & peer-group z-scores plus IsolationForest, catching all seeded insiders (precision@K 1.0).",tags:["UBA","IsolationForest","Anomaly"],tests:9},
+ {n:20,c:"adv",f:"20_CTF_Platform",t:"CTF Platform",d:"A Flask Capture-The-Flag platform: eight solvable challenges across crypto/web/forensics/reversing, hashed-flag submission, scoreboard, first-blood and a Docker stack.",tags:["Flask","CTF","Docker","Scoreboard"],tests:11},
+];
+let cat="all";
+const grid=document.getElementById('grid');
+function view(list){
+  grid.innerHTML=list.map(p=>`
+    <a class="card" href="reports/${p.f}.pdf" title="Open report for ${p.f}">
+      ${p.def?'<span class="badge">⚠ Defensive build</span>':''}
+      <span class="num">${String(p.n).padStart(2,'0')}</span>
+      <span class="cat ${p.c.includes('adv')?'adv':'core'}">${p.c.includes('adv')?'Advanced':'Core'}</span>
+      <h3>${p.t}</h3>
+      <p>${p.d}</p>
+      <div class="chips">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+      <div class="foot"><span class="tests"><b>${p.tests}</b> tests</span><span class="open">Open report PDF</span></div>
+    </a>`).join('');
+  document.getElementById('count').textContent=`${list.length} of ${P.length} shown`;
+}
+function apply(){
+  const q=document.getElementById('q').value.toLowerCase().trim();
+  let l=P.filter(p=>cat==="all"?true:p.c.includes(cat));
+  if(q) l=l.filter(p=>(p.t+' '+p.d+' '+p.tags.join(' ')).toLowerCase().includes(q));
+  view(l);
+}
+function setCat(el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));el.classList.add('on');cat=el.dataset.c;apply();}
+view(P);document.getElementById('count').textContent=`${P.length} of ${P.length} shown`;
+</script>
+</body>
+</html>
