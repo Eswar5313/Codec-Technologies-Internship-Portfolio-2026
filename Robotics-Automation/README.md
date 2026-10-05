@@ -1,3 +1,13 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Eswar5313/Eswar5313/main/assets/headers/REPO_CODEC.svg" width="100%" alt="Codec Technologies engineering portfolio" />
+
+<a href="../README.md"><img src="https://img.shields.io/badge/⬅-CODEC_PORTFOLIO-000000?style=for-the-badge&labelColor=FFFFFF" alt="CODEC PORTFOLIO"/></a> <a href="https://eswar5313.github.io/Codec-Technologies-Internship-Portfolio-2026/Robotics-Automation/dashboard.html"><img src="https://img.shields.io/badge/✦-TRACK_DASHBOARD-000000?style=for-the-badge&labelColor=C9CDD6" alt="TRACK DASHBOARD"/></a> <a href="https://github.com/Eswar5313"><img src="https://img.shields.io/badge/✦-CAREER_CONTROL_TOWER-000000?style=for-the-badge&labelColor=FFFFFF" alt="CAREER CONTROL TOWER"/></a>
+
+</div>
+
+<img src="https://raw.githubusercontent.com/Eswar5313/Eswar5313/main/assets/divider.svg" width="100%" alt="" />
+
 # Robotics & Automation Projects — Codec Technologies Internship 2026
 
 **Author:** Eswar Mahalingam · Robotics & Automation Intern, Codec Technologies India (Aug 2026 – Present, Remote)
@@ -5,7 +15,7 @@
 
 All ten simulation projects from the internship brief. Each folder is standalone: the algorithms (path planning, control, SLAM, kinematics, computer vision) are implemented from scratch in Python and exercised by a full simulation with a GIF/MP4 of the run, a `unittest` suite, a one-command `run_all.sh`, and a 2–4 page engineering report PDF. Every number below was produced by the code in this repository; the logs and `metrics.json` files sit next to each result.
 
-**Compact layout:** this folder holds the 10 engineering-report PDFs (`reports/`), a clickable overview (`dashboard.html`) and the complete source tree as one archive — **`Robotics-Automation-Projects-Codec-2026_source.zip`** (unzip → each `NN_*/` project folder runs standalone with `./run_all.sh`). Project names in the table below link to their report PDF.
+**Compact layout:** this folder holds the 10 engineering-report PDFs (`reports/`), a clickable overview (`dashboard.html`) and the complete source tree is kept as a single archive (too large for GitHub's web uploader) — shared on request and demonstrated live in interviews. Project names in the table below link to their report PDF.
 
 ## Projects
 
@@ -57,3 +67,20 @@ Robotics-Automation-Projects-Codec-2026/
 ```
 
 Licence: MIT for my code; briefs belong to Codec Technologies.
+
+<img src="https://raw.githubusercontent.com/Eswar5313/Eswar5313/main/assets/divider.svg" width="100%" alt="" />
+
+<div align="center">
+
+**Eswar Mahalingam** · B.Com · MBA · PGDLSCM · CSCMP SCPro · Six Sigma Black Belt
+Data Scientist @ Zidio Development · Ghaziabad NCR, India · Open to India · EU (Blue Card) · Gulf · Immediate joiner
+
+[![LinkedIn](https://img.shields.io/badge/✦-LINKEDIN-000000?style=for-the-badge&labelColor=C9CDD6)](https://linkedin.com/in/eswar-mahalingam)
+[![Email](https://img.shields.io/badge/✦-EMAIL-000000?style=for-the-badge&labelColor=FFFFFF)](mailto:eswarmba05313@gmail.com)
+[![Phone](https://img.shields.io/badge/✦-+91_9360548243-000000?style=for-the-badge&labelColor=C9CDD6)](tel:+919360548243)
+[![Portfolio](https://img.shields.io/badge/✦-PORTFOLIO_SITE-000000?style=for-the-badge&labelColor=FFFFFF)](https://eswar-3d-portfolio.netlify.app)
+[![Profile](https://img.shields.io/badge/⬅-CAREER_CONTROL_TOWER-000000?style=for-the-badge&labelColor=FFFFFF)](https://github.com/Eswar5313)
+
+<img src="https://raw.githubusercontent.com/Eswar5313/Eswar5313/main/assets/kailash-footer.svg" width="100%" alt="" />
+
+</div>
